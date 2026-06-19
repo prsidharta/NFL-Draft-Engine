@@ -8,7 +8,20 @@
  * 
  */
 
+#include "program.h"
+#include <iostream>
+#include <string>
+
 int main(){
+
+    std::string year;
+    std::cout << "Enter the Draft Year you wish to simulate: "  << "\n";
+    std::cin >> year;
+
+    std::string draftPath = "data/" + year + "_draft.csv";
+    std::string needsPath = "data/" + year + "_draft.csv";
+
+    Program myProgram(draftPath, needsPath);
 
     return 0;
 }

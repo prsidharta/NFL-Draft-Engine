@@ -32,3 +32,35 @@ std::vector<Draftee> DraftParser::ParseCSV(std::string filepath){
 
     return draftClass;
 }
+
+std::vector<Team> DraftParser::ParseTeams(std::string filepath) {
+    std::vector<Team> draftOrder;
+    std::ifstream pFile(filepath);
+    
+    if (!pFile.is_open()) {
+        std::cerr << "Error: Could not open team needs file!" << std::endl;
+        return draftOrder;
+    }
+
+    std::string line;
+    while (std::getline(pFile, line)) {
+        std::stringstream ss(line);
+        std::string teamName;
+        std::vector<std::string> teamNeeds;
+
+        std::getline(ss, teamName, ',');
+
+        std::string need;
+        while (std::getline(ss, need, ',')) {
+            if (!need.empty() && need.back() == '\r') {
+                need.pop_back();
+            }
+            teamNeeds.push_back(need);
+        }
+
+        Team newTeam(teamName, teamNeeds);
+        draftOrder.push_back(newTeam);
+    }
+
+    return draftOrder;
+}
