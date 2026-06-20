@@ -2,8 +2,8 @@
 
 #include <string>
 #include <vector>
-#include <draftee.h>
-#include <team.h>
+#include "draftee.h"
+#include "team.h"
 
 class DraftParser{
     public:

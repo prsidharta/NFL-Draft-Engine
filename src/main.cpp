@@ -23,5 +23,7 @@ int main(){
 
     Program myProgram(draftPath, needsPath);
 
+    myProgram.RunRedraft();
+
     return 0;
 }
